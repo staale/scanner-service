@@ -10,6 +10,7 @@ import atexit
 import sane
 import time
 
+import daemon
 import logging
 import os
 
@@ -37,9 +38,7 @@ def open_device():
             log.info("Setting resolution to %d, button controlled is enabled"%dev.resolution)
             return dev
 
-
-
-if __name__ == "__main__":
+def main():
     sane.init()
     img_count = 1
     try:
@@ -62,3 +61,7 @@ if __name__ == "__main__":
     finally:
         log.info("Closing scanner service")
         sane.exit()
+
+if __name__ == "__main__":
+    with daemon.DaemonContext():
+        main()
