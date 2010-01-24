@@ -10,7 +10,7 @@ import atexit
 import sane
 import time
 
-import daemon
+#import daemon
 import logging
 import os
 
@@ -63,5 +63,5 @@ def main():
         sane.exit()
 
 if __name__ == "__main__":
-    with daemon.DaemonContext():
-        main()
+    #with daemon.DaemonContext():
+    main()

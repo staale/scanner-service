@@ -1,8 +1,11 @@
 from django.db import models
 
+from datetime import datetime
+
 class ImageFile(models.Model):
     path = models.CharField(max_length=150)
-    scanned_image = models.ForeignKey("ScannedImage", null=True)
+    scan_date = models.DateField(default=datetime.now)
+#    scanned_image = models.ForeignKey("ScannedImage", null=True)
 
 class ScannedImage(models.Model):
     original = models.OneToOneField(ImageFile)
